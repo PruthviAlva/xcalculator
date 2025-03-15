@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { evaluate } from "mathjs";
 import './App.css';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
           setResult("Error");
           return;
         }
-        const output = new Function("return " + expression)();
+        const output = evaluate(expression); // Safe evaluation
         setResult(output);
       } catch {
         setResult("Error");
